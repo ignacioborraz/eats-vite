@@ -2,6 +2,8 @@ import logo from './logo.svg';
 import './App.css';
 import Main from './components/Main'
 import Layout from './layouts/Layout'
+import Carousel from './components/Carousel';
+
 function App() {
 
   let string = "App"
@@ -16,8 +18,9 @@ function App() {
         </p>
       </header>
       <Layout>
-        {/* PRIMER UTILIZACIÓN DE COMPONENTE MAIN */}<Main texto="Hola soy una prop" numero={numero} />
-        {/* SEGUNDA UTILIZACIÓN DE COMPONENTE MAIN */}<Main texto="Hola soy la segunda prop" />
+        {/* PRIMER UTILIZACIÓN DE COMPONENTE MAIN <Main texto="Hola soy una prop" numero={numero} />
+        {/* SEGUNDA UTILIZACIÓN DE COMPONENTE MAIN <Main texto="Hola soy la segunda prop" />*/}
+        <Carousel />
       </Layout>
     </div>
   );
