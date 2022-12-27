@@ -6,7 +6,7 @@ import './layout.css'
 const Layout = (props) => {
   // Elementos que se repiten en todas las paginas
   // NAV Y FOOTER
-  console.log(props)
+  //console.log(props)
   let optNav = [
     {name: "Home"},
     {name: "Comics"},

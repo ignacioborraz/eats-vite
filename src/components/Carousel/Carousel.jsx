@@ -7,76 +7,61 @@ export default function Carousel() {
     const [id, setId] = useState(0)
     const [mangas, setMangas] = useState([])
 
-    const traerData = async () => {
-        try {
-            const res = await fetch('../manga.json')
-            const data = await res.json()
-    
-            setMangas(data)
-            console.log(data)
-
-        } catch(err) {
-            console.log(err)
-        }
-    }
-
     useEffect(() => {
         fetch('./manga.json')
             .then(res => res.json())
             .then(data => {
                 setMangas(data)
-                console.log(mangas)
             })
             .catch(err => console.log(err))
     }, [])
 
     console.log(mangas)
-    useEffect(() => {
-        
-        let idInterval = setInterval(() => {
-            next()
-        }, 5000)
-
-        setId(idInterval)
-
-        return clearInterval(id)
-        
-    }, [numero])
-
-    // useEffect(() => {
-    //     console.log('Se monto el componente y/o se actualizó')
-
-    //     return () => {
-    //         console.log('Se desmonto el componente')
-    //     }
-    // }, [numero])
+    useEffect(
+        ()=>{  
+          let idInterval = setInterval(
+            ()=> { //primer parametro la funcion que se va a ejecutar en cada intervalo de tiempo
+                next()
+                //console.log('pasaron 5 segundos')
+            },
+            5000 //segundo parametro es el intervalo en milisengudos
+            //retorna un id asociado al intervalo (que es un numero)
+            //acepta una funcion que resetea el intervalo/contador con ese id
+          )
+          setId(idInterval)
+          return clearInterval(id)
+          // eslint-disable-next-line
+        },[numero]
+    )
 
     const prev = () => {
-        if(numero > 0) {
-            setNumero(numero - 1)
+        if (numero>0) {
+          setNumero(numero-1)
         } else {
-            setNumero(mangas.length - 1)
+          setNumero(mangas.length-1)
         }
+        //console.log('se ejecutó prev')
         clearInterval(id)
-        console.log('prev')
     }
 
     const next = () => {
-        if(numero < mangas.length - 1) {
-            setNumero(numero + 1)
+        console.log(numero , mangas.length-1)
+        if (numero<mangas.length-1) {
+          setNumero(numero+1)
         } else {
-            setNumero(0)
-        }
+          setNumero(0)
+        }    
+        //console.log('se ejecutó next')
         clearInterval(id)
-        console.log('next')
-    }
+      }    
 
-
-  return (
-    <div  className="carousel-container fade">
-        <a className="prev" onClick={prev}>&#10094;</a>
-        <Slide nombre={mangas[numero]?.title} foto={mangas[numero]?.photo}/>
-        <a className="next" onClick={next}>&#10095;</a>
-    </div>
-  )
+    return (
+        <div  className="carousel-container fade">
+            {mangas.length > 0 && <>
+                <a className="prev" onClick={prev}>&#10094;</a>
+                <Slide nombre={mangas[numero].title} foto={mangas[numero].photo}/>
+                <a className="next" onClick={next}>&#10095;</a>
+            </>}
+        </div>
+    )
 }
