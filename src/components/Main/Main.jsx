@@ -1,5 +1,5 @@
 import React from 'react'
-import "../styles/Main.css"
+import "./main.css"
 const Main = (props) => {
   let { texto, numero } = props
   
