@@ -1,10 +1,7 @@
 import React, { useState } from 'react'
 
 const Header = ({type,options}) => {
-  console.log(type)
-
   const [nav, setNav] = useState(false)
-
   const handleMenu = () => setNav(!nav)
 
   return (

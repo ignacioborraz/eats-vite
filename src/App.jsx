@@ -1,11 +1,14 @@
 import './App.css';
 import Layout from './layouts/Layout'
-import Carousel from './components/Carousel/Carousel';
+
+import { router } from './router';
+import { RouterProvider } from "react-router-dom"
+
 
 function App() {
   return (
       <Layout>
-        <Carousel />
+        <RouterProvider router={router} />
       </Layout>
   )
 }
