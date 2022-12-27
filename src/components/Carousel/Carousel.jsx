@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-// import mangas from '../manga'
+import './carousel.css'
 import Slide from './Slide'
 
 export default function Carousel() {
@@ -73,9 +73,9 @@ export default function Carousel() {
 
 
   return (
-    <div  className="slideshow-container">
-        <Slide nombre={mangas[numero]?.title} foto={mangas[numero]?.photo}/>
+    <div  className="carousel-container fade">
         <a className="prev" onClick={prev}>&#10094;</a>
+        <Slide nombre={mangas[numero]?.title} foto={mangas[numero]?.photo}/>
         <a className="next" onClick={next}>&#10095;</a>
     </div>
   )
