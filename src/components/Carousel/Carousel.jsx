@@ -1,67 +1,81 @@
 import React, {useState, useEffect} from 'react'
 import './carousel.css'
 import Slide from './Slide'
+import Layout from '../../layouts/Layout'
 
 export default function Carousel() {
-    const [numero, setNumero] = useState(0)
-    const [id, setId] = useState(0)
+    /**
+     * Keep the current position in the array
+     */
+    const [index, setIndex] = useState(0)
+
+    /**
+     * ID of interval
+     */
+    const [intervalId, setIntervalId] = useState(0)
+
+    /**
+     * Current object to be read in render
+     */
+    const [manga, setManga] = useState({})
+
+    /**
+     * Collection of mangas
+     */
     const [mangas, setMangas] = useState([])
 
     useEffect(() => {
-        fetch('./manga.json')
-            .then(res => res.json())
-            .then(data => {
-                setMangas(data)
-            })
-            .catch(err => console.log(err))
-    }, [])
-
-    console.log(mangas)
-    useEffect(
-        ()=>{  
-          let idInterval = setInterval(
-            ()=> { //primer parametro la funcion que se va a ejecutar en cada intervalo de tiempo
-                next()
-                //console.log('pasaron 5 segundos')
-            },
-            5000 //segundo parametro es el intervalo en milisengudos
-            //retorna un id asociado al intervalo (que es un numero)
-            //acepta una funcion que resetea el intervalo/contador con ese id
-          )
-          setId(idInterval)
-          return clearInterval(id)
-          // eslint-disable-next-line
-        },[numero]
+            console.log('fetch')
+            fetch('./manga.json')
+                .then(res => res.json())
+                .then(data => {
+                    setMangas(data);
+                    setManga(data[0])
+                })
+                .catch(err => console.log(err))
+        }, []
     )
 
+    useEffect(() => {
+        let intervalId = setInterval(next, 3000)
+        return () => clearInterval(Number(intervalId))
+    }, [index])
+
+    const slide = function (i) {
+        setIndex(i)
+        setManga(mangas[i])
+        clearInterval(intervalId)
+    }
+
     const prev = () => {
-        if (numero>0) {
-          setNumero(numero-1)
-        } else {
-          setNumero(mangas.length-1)
+        let i = index - 1
+
+        if (i < 0) {
+            i = mangas.length - 1
         }
-        //console.log('se ejecutó prev')
-        clearInterval(id)
+
+        slide(i)
     }
 
     const next = () => {
-        console.log(numero , mangas.length-1)
-        if (numero<mangas.length-1) {
-          setNumero(numero+1)
-        } else {
-          setNumero(0)
-        }    
-        //console.log('se ejecutó next')
-        clearInterval(id)
-      }    
+        let i = index + 1
+
+        if (i === mangas.length) {
+            i = 0
+        }
+
+        slide(i)
+    }
 
     return (
-        <div  className="carousel-container fade">
-            {mangas.length > 0 && <>
-                <a className="prev" onClick={prev}>&#10094;</a>
-                <Slide nombre={mangas[numero].title} foto={mangas[numero].photo}/>
-                <a className="next" onClick={next}>&#10095;</a>
-            </>}
-        </div>
+        <Layout>
+            <div className="carousel-container fade">
+                {manga ? <>
+                    <a className="prev" onClick={prev}>&#10094;</a>
+                    <Slide nombre={manga.title} foto={manga.photo}/>
+                    <a className="next" onClick={next}>&#10095;</a>
+                </> : ""}
+            </div>
+        </Layout>
     )
 }
