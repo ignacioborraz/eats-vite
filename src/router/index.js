@@ -3,7 +3,7 @@ import Layout from "../layouts/Layout"
 import Carousel from "../components/Carousel/Carousel"
 import Comics from "./Comics/Comics"
 import Details from "./Details/Details"
-
+import Form from '../components/Form/Form'
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -19,6 +19,10 @@ export const router = createBrowserRouter([
         path: "/comic/:id",
         element: <Details />
       },
+      {
+        path:"/newcategory",
+        element:<Form/>
+      }
     ]
   },
 
