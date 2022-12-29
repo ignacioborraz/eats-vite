@@ -8,7 +8,8 @@ const Layout = (props) => {
     let optNav = [
         {name: "Home", to: "/"},
         {name: "Comics", to: "/comics"},
-        {name: "About Us", to: "/about"}
+        {name: "About Us", to: "/about"},
+        {name: "New Category", to: "/newcategory"}
     ]
 
     let optUser = [
