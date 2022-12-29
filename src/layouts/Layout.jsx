@@ -1,13 +1,14 @@
 import React from 'react'
+import { Outlet } from 'react-router'
 import Header from './Header'
 import Footer from './Footer'
 import './layout.css'
 
 const Layout = (props) => {
     let optNav = [
-        {name: "Home"},
-        {name: "Comics"},
-        {name: "About Us"}
+        {name: "Home", to: "/"},
+        {name: "Comics", to: "/comics"},
+        {name: "About Us", to: "/about"}
     ]
 
     let optUser = [
@@ -21,7 +22,7 @@ const Layout = (props) => {
                 <Header type='nav' options={optNav}/>
                 <Header type='user' options={optUser}/>
             </div>
-            <div className='layout-grow'>{props.children}</div>
+            <div className='layout-grow'><Outlet /></div>
             <Footer/>
         </div>
     )

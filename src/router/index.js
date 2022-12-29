@@ -1,19 +1,25 @@
 import { createBrowserRouter } from "react-router-dom"
+import Layout from "../layouts/Layout"
 import Carousel from "../components/Carousel/Carousel"
-import CarouselCopy from "./CarouselCopy/Carousel"
+import Comics from "./Comics/Comics"
 import Details from "./Details/Details"
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <Carousel />
+    element: <Layout />,
+    children: [
+      {
+        path: "/",
+        element: <Carousel />
+      },{
+        path: "/comics",
+        element: <Comics />
+      },{
+        path: "/comic/:id",
+        element: <Details />
+      },
+    ]
   },
-  {
-    path: "/comics",
-    element: <CarouselCopy />
-  },
-  {
-    path: "/comic/:id",
-    element: <Details />
-  },
+
 ])
