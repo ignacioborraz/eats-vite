@@ -1,37 +1,35 @@
-import React, { useRef, useState } from "react";
-import axios from "axios";
-import "./form.css";
+import React, { useRef } from "react"
+import "./form.css"
+import { useSelector, useDispatch } from 'react-redux'
+import categoryActions from '../../store/categories/actions'
+const { crearCategoria } = categoryActions
+
 const Form = () => {
-
-  const inputNombre = useRef("");
-  const inputRanking = useRef("");
-  const inputExamples = useRef("");
-  const inputDetail = useRef("");
-
-  const [value, setValue] = useState("")
-  
-  console.log(value)
-  let guardarData = (e) =>{
-    e.preventDefault()
-
-    let data = {
-        name:inputNombre.current.value,
-        ranking:inputRanking.current.value,
-        examples:inputExamples.current.value.split(","),
-        detail:inputDetail.current.value,
-        user_id:"63ac47d8b4db2f7baacad498"
+    const inputNombre = useRef("")
+    const inputRanking = useRef("")
+    const inputExamples = useRef("")
+    const inputDetail = useRef("")
+    const { categories } = useSelector((state) => state.categories)
+    //console.log(categories)
+    const dispatch = useDispatch()
+    const guardarData = (e) =>{
+        e.preventDefault()
+            let data = {
+            name: inputNombre.current.value,
+            ranking: inputRanking.current.value,
+            examples: inputExamples.current.value.split(","),
+            detail: inputDetail.current.value,
+            user_id:"63ac47d8b4db2f7baacad498"
+        }
+        //console.log(data)
+        dispatch(crearCategoria(data))
     }
-    axios.post("http://localhost:8000/categories", data)
-    .then(e=>console.log(e))
-    .catch(error=>console.log(error))
-  }
 
   return (
     <form className="form" onSubmit={guardarData} >
       <label htmlFor="name">
         Nombre
-        <input
-          
+        <input          
           type="text"
           id="name"
           placeholder="inserte nombre"
@@ -45,7 +43,6 @@ const Form = () => {
           type="number"
           id="ranking"
           placeholder="inserte raking"
-          onChange={(e)=>setValue(e.target.value)}
         />
       </label>
       <label htmlFor="examples">
@@ -70,4 +67,4 @@ const Form = () => {
     </form>
   );
 };
-export default Form;
+export default Form

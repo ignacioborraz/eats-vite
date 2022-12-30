@@ -30,15 +30,15 @@ const categoryReducers = createReducer(initialState,
             return newState
         })
         .addCase(crearCategoria.fulfilled, (state, action) => {
-            console.log(action.payload)
-            let newState = {
-                ...state                
+            //cuando hay que agregar algo, conviene directamente
+            //pushear lo que corresponda donde corresponda
+            console.log(action.payload.response)
+            if (action.payload.success) {
+                state.categories.push(action.payload.response)
+            } else {
+                alert(action.payload.response.response)
             }
-            newState.categories.push(action.payload.response)
-            return newState
-        })
-        .addCase(crearCategoria.rejected, (state, action) => {
-            return state
+            
         })
     }
 )
