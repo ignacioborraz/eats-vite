@@ -3,7 +3,7 @@ import './App.css'
 import { router } from './router'
 import { RouterProvider } from "react-router-dom"
 
-import { store } from './store/store'
+import store from './store/store'
 import { Provider } from 'react-redux'
 
 function App() {
@@ -16,4 +16,4 @@ function App() {
 
 export default App
 
-//segundo paso inyecto el store
+//en App.js inyecto el store con los estados globales y el enrrutador de las vistas

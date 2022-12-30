@@ -3,7 +3,7 @@ import Layout from "../layouts/Layout"
 import Carousel from "../components/Carousel/Carousel"
 import Comics from "./Comics/Comics"
 import Details from "./Details/Details"
-import Form from '../components/Form/Form'
+import Form from './Form/Form'
 export const router = createBrowserRouter([
   {
     path: "/",

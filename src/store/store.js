@@ -1,10 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
 import categoryReducers from './categories/reducers'
 
-export const store = configureStore({
+const store = configureStore({
     reducer: {
         categories: categoryReducers
     }
 })
 
-//primer paso VACIO
+export default store
+
+//en el store configuro TODOS los reductores
+//la propiedad categories contendrá todos los estados reducidos de categoryReducers
