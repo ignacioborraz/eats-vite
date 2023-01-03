@@ -4,14 +4,14 @@ import Header from './Header'
 import Footer from './Footer'
 import './layout.css'
 
-const Layout = (props) => {
+const Layout = () => {
+
     let optNav = [
         {name: "Home", to: "/"},
         {name: "Comics", to: "/comics"},
         {name: "About Us", to: "/about"},
         {name: "New Category", to: "/newcategory"}
     ]
-
     let optUser = [
         {name: 'Sign In'},
         {name: 'Sign Up'}

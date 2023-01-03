@@ -27,9 +27,9 @@ export default function Carousel() {
 
     const slide = (i) => {
         setIndex(i)
-        console.log(index)
+        //console.log(index)
         setManga(mangas[i])
-        console.log(mangas[i])
+        //console.log(mangas[i])
         clearInterval(intervalId)
     }
 

@@ -4,13 +4,26 @@
     justify-content: center;
     align-items: center;
     width: 700px;
-    height: 350px;
+}
+
+.comics-categories{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
 
 .comics-card {
     width: 500px;
     height: 350px;
     margin: 20px;
+}
+
+.comics-buttons {
+    margin: 5px;
+    padding: 5px;
+    background-color: #222;
+    color: white;
 }
 
 .comics-img {

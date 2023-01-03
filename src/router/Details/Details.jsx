@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom'
 export default function Details() {
     const [manga, setManga] = useState({})
     const { id } = useParams()
-    console.log(id)
+    //console.log(id)
 
     useEffect(() => {
         fetch('/manga.json')
@@ -13,7 +13,7 @@ export default function Details() {
             .then(data => {
                 let finded = data.find(manga => id===manga.id)
                 setManga(finded)
-                console.log(finded)
+                //console.log(finded)
             })
             .catch(err => console.log(err))
     }, [])
