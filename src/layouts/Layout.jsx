@@ -13,8 +13,8 @@ const Layout = () => {
         {name: "New Category", to: "/newcategory"}
     ]
     let optUser = [
-        {name: 'Sign In'},
-        {name: 'Sign Up'}
+        {name: 'Sign In', to: "/signin"},
+        {name: 'Sign Up', to: "/signup"},
     ]
 
     return (

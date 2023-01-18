@@ -4,6 +4,8 @@ import Carousel from "../components/Carousel/Carousel"
 import Comics from "./Comics/Comics"
 import Details from "./Details/Details"
 import Form from './Form/Form'
+import SignIn from "../components/Login/SignIn"
+import SignUp from "../components/Login/SignUp"
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -22,8 +24,15 @@ export const router = createBrowserRouter([
       {
         path:"/newcategory",
         element:<Form/>
+      },
+      {
+        path:"/signin",
+        element:<SignIn/>
+      },
+      {
+        path:"/signup",
+        element:<SignUp/>
       }
     ]
   },
-
 ])
