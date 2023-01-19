@@ -1,6 +1,6 @@
 import React, { useRef } from "react"
 import { useDispatch } from 'react-redux'
-import { Link as Anchor } from 'react-router-dom'
+import { Link as Anchor,useNavigate } from 'react-router-dom'
 import "../Login/form.css"
 
 import authActions from "../../store/auth/actions"
@@ -12,6 +12,7 @@ const SignUp = () => {
 	const mail = useRef("")
 	const photo = useRef("")
 	const password = useRef("")
+    const navigate = useNavigate()
 
 	const captureData = (e) =>{
 		e.preventDefault()
@@ -23,6 +24,7 @@ const SignUp = () => {
 		}
         console.log(data)
 		dispatch(registrar_usuario(data))
+        navigate("/signin",{ replace:true })
 	}
 
     return (

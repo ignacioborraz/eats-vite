@@ -6,7 +6,7 @@ import authActions from '../store/auth/actions'
 const { cerrar_sesion } = authActions
 
 const Header = ({type, options}) => {
-    let { token,is_online } = useSelector(store => store.auth)
+    let { photo,token,is_online } = useSelector(store => store.auth)
     let dispatch = useDispatch()
     const [open, isOpen] = useState(false)
     const handleMenu = () => isOpen(!open)
@@ -21,13 +21,36 @@ const Header = ({type, options}) => {
 
     return (
         <>
-            <img onClick={handleMenu} className='header-button' src={menuIcon} alt={type} />
-            {open &&
-                <div className={`header-options-${type}`}>
-                    {options.map(option => <Link key={option.to} to={option.to} className='header-options'>{option.name}</Link>)}
-                    {type === "user" && is_online && (<button className='header-options' onClick={signout}>Sign Out</button>)}
-                </div>
-            }
+        {type === "user" ? (
+            is_online ? (
+                <>
+                    <img onClick={handleMenu} className='header-button' src={photo} alt={type} />
+                    {open &&
+                        <div className={`header-options-${type}`}>
+                            <p type="button" className='header-options' onClick={signout}>Sign Out</p>
+                        </div>
+                    }
+                </>
+            ) : (
+                <>
+                    <img onClick={handleMenu} className='header-button' src={menuIcon} alt={type} />
+                    {open &&
+                        <div className={`header-options-${type}`}>
+                            {options.map(option => <Link key={option.to} to={option.to} className='header-options'>{option.name}</Link>)}
+                        </div>
+                    }
+                </>
+            )
+        ) : (
+            <>
+                <img onClick={handleMenu} className='header-button' src={menuIcon} alt={type} />    
+                {open &&
+                    <div className={`header-options-${type}`}>
+                        {options.map(option => <Link key={option.to} to={option.to} className='header-options'>{option.name}</Link>)}
+                    </div>
+                }
+            </>
+        )}
         </>
     )
 }
