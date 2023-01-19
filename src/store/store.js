@@ -1,13 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
+import authReducer from './auth/reducers'
 import categoryReducers from './categories/reducers'
 
 const store = configureStore({
     reducer: {
-        categories: categoryReducers
+        categories: categoryReducers,
+        auth: authReducer
     }
 })
 
 export default store
-
-//en el store configuro TODOS los reductores
-//la propiedad categories contendrá todos los estados reducidos de categoryReducers
