@@ -105,7 +105,11 @@ const authReducer = createReducer(initialState,
         .addCase(cerrar_sesion.fulfilled, (state, action) => {
             //console.log(action.payload)
             localStorage.removeItem('token')
-            return initialState
+            let newState = {
+                ...initialState,
+                messages: ['see you soon!']
+            }
+            return newState
         })
 
     }

@@ -20,16 +20,13 @@ export const router = createBrowserRouter([
       },{
         path: "/comic/:id",
         element: <Details />
-      },
-      {
+      },{
         path:"/newcategory",
         element:<Form/>
-      },
-      {
+      },{
         path:"/signin",
         element:<SignIn/>
-      },
-      {
+      },{
         path:"/signup",
         element:<SignUp/>
       }

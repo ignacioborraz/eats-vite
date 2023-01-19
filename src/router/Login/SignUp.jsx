@@ -1,5 +1,5 @@
 import React, { useRef } from "react"
-import { useDispatch } from 'react-redux'
+import { useDispatch,useSelector } from 'react-redux'
 import { Link as Anchor,useNavigate } from 'react-router-dom'
 import "../Login/form.css"
 
@@ -8,13 +8,15 @@ const { registrar_usuario } = authActions
 
 const SignUp = () => {
 
+    const { messages } = useSelector(store => store.auth)
+    console.log(messages)
 	const dispatch = useDispatch()
 	const mail = useRef("")
 	const photo = useRef("")
 	const password = useRef("")
     const navigate = useNavigate()
 
-	const captureData = (e) =>{
+	const captureData = async(e) =>{
 		e.preventDefault()
 		//console.log(mail.current.value,photo.current.value,password.current.value)
 		let data = {
@@ -23,8 +25,10 @@ const SignUp = () => {
             password: password.current.value
 		}
         console.log(data)
-		dispatch(registrar_usuario(data))
-        navigate("/signin",{ replace:true })
+		let res = await dispatch(registrar_usuario(data))
+        if (res.payload.success) {
+            navigate("/",{ replace:true })
+        } /* configurar alerta */       
 	}
 
     return (
