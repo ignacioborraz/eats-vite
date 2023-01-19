@@ -27,7 +27,7 @@ const Header = ({type, options}) => {
                     <img onClick={handleMenu} className='header-button' src={photo} alt={type} />
                     {open &&
                         <div className={`header-options-${type}`}>
-                            <p type="button" className='header-options' onClick={signout}>Sign Out</p>
+                            <anchor type="button" className='header-options' onClick={signout}>Sign Out</anchor>
                         </div>
                     }
                 </>
