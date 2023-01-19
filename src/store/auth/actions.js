@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
 const apiUrl = process.env.REACT_APP_URL //la url de nuestra API es sensible, conviene protegerla
-
+console.log(apiUrl)
 const registrar_usuario = createAsyncThunk('registrar_usuario', async (data) => {
     let url = `${apiUrl}api/auth/signup`
     try {

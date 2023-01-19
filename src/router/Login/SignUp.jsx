@@ -1,7 +1,7 @@
 import React, { useRef } from "react"
 import { useDispatch } from 'react-redux'
 import { Link as Anchor } from 'react-router-dom'
-import "../Login/signup.css"
+import "../Login/form.css"
 
 import authActions from "../../store/auth/actions"
 const { registrar_usuario } = authActions
@@ -21,12 +21,13 @@ const SignUp = () => {
             photo: photo.current.value,
             password: password.current.value
 		}
+        console.log(data)
 		dispatch(registrar_usuario(data))
 	}
 
     return (
         <div className="container">
-            <div className="grow bkg div2"></div>
+            <div className="grow bkg div2" style={{backgroundImage: "url('https://images.pexels.com/photos/7809123/pexels-photo-7809123.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')"}}></div>
             <form action="post" className="grow col flex">
                 <fieldset>
                     <label htmlFor="">Mail</label>
@@ -39,7 +40,7 @@ const SignUp = () => {
                 </fieldset>
                 <div>
                     <p>Do you already have an account? then</p>
-                    <Anchor to="/signin"> Login!</Anchor>
+                    <Anchor to="/signin">Login!</Anchor>
                 </div>
             </form>
         </div>

@@ -1,7 +1,7 @@
 import React, { useRef } from "react"
 import { useDispatch } from 'react-redux'
 import { Link as Anchor } from 'react-router-dom'
-import "../Login/signin.css"
+import "../Login/form.css"
 
 import authActions from "../../store/auth/actions"
 const { iniciar_sesion } = authActions
@@ -37,10 +37,10 @@ const SignIn = () => {
                     <Anchor to={"/signup"}>Sign up!</Anchor>
                 </div>
             </form>
-            <div className='grow bkg div2'></div>
+            <div className='grow bkg div2' style={{backgroundImage: "url('https://images.pexels.com/photos/4841961/pexels-photo-4841961.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')"}}></div>
         </div>
     )
-
+//https://images.pexels.com/photos/7809123/pexels-photo-7809123.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1
 }
 
 export default SignIn
